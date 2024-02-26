@@ -1,0 +1,57 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+*.ini
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+/T3_00_EDK_Workspace/bin/*
+/T3_00_EDK_Workspace/build/*
+
+/T2_05_LightMap_Workspace/bin/*
+/T2_05_LightMap_Workspace/build/*
+
+/T2_03_Sponza_Workspace/bin/*
+/T2_03_Sponza_Workspace/build/*
+
+/T2_01_Teapot_Workspace/bin/*
+/T2_01_Teapot_Workspace/build/*
+
+/T1_02_VertexFragmentShaderPlayground/bin/*
+/T1_02_VertexFragmentShaderPlayground/build/*
+
+/T1_01_VertexShaderPlayground/bin/*
+/T1_01_VertexShaderPlayground/build/*
+
+/T1_00_FragmentShaderPlayground/bin/*
+/T1_00_FragmentShaderPlayground/build/*
+
+
+
