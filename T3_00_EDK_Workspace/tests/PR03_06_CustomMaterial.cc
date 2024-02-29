@@ -22,6 +22,8 @@
 #include "ESAT_extra/imgui.h"
 #include "EDK3/dev/opengl.h"
 #include "material_basic.h"
+#include "material_custom.h"
+
 
 
 //Unnamed struct and it's unique instance:
@@ -56,7 +58,7 @@ void InitScene() {
   EDK3::ref_ptr<EDK3::Texture> texture1;
   EDK3::Texture::Load("./test/ruben.jpg", &texture1);
   if (!texture1) {
-      printf("Can't load texture sun.jpg\n");
+      printf("Can't load texture su2n.jpg\n");
       exit(-2);
   }
 
@@ -69,16 +71,16 @@ void InitScene() {
   //mat_diff_text_settings->set_color(color);
   //mat_diff_text_settings->set_texture(texture.get());
 
-  EDK3::ref_ptr<EDK3::MaterialBasic> mat_basic;
+  EDK3::ref_ptr<EDK3::MaterialCustom> mat_basic;
   mat_basic.alloc();
-  mat_basic->init();
+  mat_basic->init("./shaders/material_custom.vs", "./shaders/material_custom.fs");
 
-  EDK3::ref_ptr<EDK3::MaterialBasic::MaterialBasicSettings> mat_basic_settings;
+  EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomSettings> mat_basic_settings;
   mat_basic_settings.alloc();
   float color0[] = { 1.0f, 0.0f, 0.0f, 1.0f };
   mat_basic_settings->set_color(color0);
 
-  EDK3::ref_ptr<EDK3::MaterialBasic::MaterialBasicTexturedSettings> mat_basic_settings_tx;
+  EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomTexturedSettings> mat_basic_settings_tx;
   mat_basic_settings_tx.alloc();
   float color1[] = { 0.0f, 1.0f, 0.0f, 1.0f };
   mat_basic_settings_tx->set_color(color1);

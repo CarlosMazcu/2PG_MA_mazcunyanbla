@@ -71,6 +71,14 @@ namespace EDK3 {
 
         EDK3::Material::loadVertexShaderFile(&ShaderV, vertex_shader_path);
         EDK3::Material::loadFragmentShaderFile(&ShaderF, fragment_shader_path);
+        if (!ShaderV) {
+            printf("Can't load vertex\n");
+            exit(-3);
+        }
+        if (!ShaderF) {
+            printf("Can't load fragment\n");
+            exit(-3);
+        }
 
 
         if (!ShaderV->compile(&Log_Error)) {
@@ -137,11 +145,25 @@ namespace EDK3 {
         return false;
     }
 
-    void MaterialCustom::setupCamera(const float projection[16], const float view[16]) const {}
+    void MaterialCustom::setupCamera(const float projection[16], const float view[16]) const 
+    {
+        ESAT::Mat4 proj = ESAT::Mat4FromColumns(projection);
+        ESAT::Mat4 vw = ESAT::Mat4FromColumns(view);
 
-    void MaterialCustom::setupModel(const float model[16]) const{}
+        ESAT::Mat4 result = ESAT::Mat4Identity();
+        result = ESAT::Mat4Multiply(proj, vw);
 
-    unsigned int MaterialCustom::num_attributes_required() const { return 0; }
+        program_->set_uniform_value(program_->get_uniform_position("u_vp_matrix"), T_MAT_4x4, result.d);
+    }
+
+    void MaterialCustom::setupModel(const float model[16]) const
+    {
+        ESAT::Mat4 md = ESAT::Mat4FromColumns(model);
+        program_->set_uniform_value(program_->get_uniform_position("u_model"), T_MAT_4x4, md.d);
+    
+    }
+
+    unsigned int MaterialCustom::num_attributes_required() const { return 3; }
 
     EDK3::Attribute MaterialCustom::attribute_at_index(const unsigned int attrib_idx) const
     {
