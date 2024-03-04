@@ -21,6 +21,7 @@
 
 #include "ESAT_extra/imgui.h"
 #include "EDK3/dev/opengl.h"
+#include "geometry_custom_quad.h"
 
 
 //Unnamed struct and it's unique instance:
@@ -42,9 +43,9 @@ void InitScene() {
   EDK3::dev::GPUManager::CheckGLError("Initializing the scene...");
   
   //Creating a cube:
-  EDK3::ref_ptr<EDK3::Geometry> quad_geo;
-  EDK3::CreateCube(&quad_geo, 1.0f, true, true);
-
+  EDK3::ref_ptr<EDK3::QuadCustom> quad_geo;
+  //EDK3::CreateCube(&quad_geo, 1.0f, true, true);
+  quad_geo.init(1.0f);
   //Loading texture:
   EDK3::ref_ptr<EDK3::Texture> texture;
   EDK3::Texture::Load("C:/Users/mazcunyanbla/Documents/GitHub/2PG_MA_mazcunyanbla/T3_00_EDK_Workspace/bin/debug/x32/test/T_Chopper.jpg", &texture);

@@ -13,6 +13,14 @@
 
 namespace EDK3 {
 
+    QuadCustom::QuadCustom() {}
+    QuadCustom::~QuadCustom() {}
+    QuadCustom& QuadCustom::operator=(const QuadCustom& other)
+    {
+        if(this != &other){}
+        return *this;
+    }
+
 //IMPORTANT!!!
 //TODO constructors, destructor and =operator here!!!
 
@@ -98,7 +106,7 @@ bool QuadCustom::bindAttribute(const Attribute a,
                                unsigned int where_to_bind_attribute) const {
   //TODO
   //EDK3::dev::GPUManager::Instance()->enableVertexAttribute
-    switch (n)
+    switch (a)
     {
     case Attribute::A_POSITION:
         EDK3::dev::GPUManager::Instance()->enableVertexAttribute(
