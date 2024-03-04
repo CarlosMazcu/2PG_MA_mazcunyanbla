@@ -18,8 +18,8 @@ project_names = {
   "PR03_03_SolarSystem",
   "PR03_05_BasicMaterial",
   "PR03_06_CustomMaterial",
+  "PR03_07_Quad",
   --"PR03_04_DotProduct",
-  --"PR03_07_Quad",
   --"PR03_08_Cube",
   --"PR03_09_Sphere",
   --"PR03_10_Surface",
@@ -152,17 +152,17 @@ project "PR03_01_Demo"
 	files {
     path.join(PROJ_DIR, "./tests/PR03_06_CustomMaterial.cc"),
   }
-  --[[
-project "PR03_04_DotProduct"
-files {
-  path.join(PROJ_DIR, "./tests/PR03_04_DotProduct.cc"),
-}  
-
-project "PR03_07_Quad"
+  
+  project "PR03_07_Quad"
 	files {
-	  path.join(PROJ_DIR, "./tests/PR03_07_Quad.cc"),
+    path.join(PROJ_DIR, "./tests/PR03_07_Quad.cc"),
   }
-
+  --[[
+    project "PR03_04_DotProduct"
+    files {
+      path.join(PROJ_DIR, "./tests/PR03_04_DotProduct.cc"),
+    }  
+    
 project "PR03_08_Cube"
 	files {
 	  path.join(PROJ_DIR, "./tests/PR03_08_Cube.cc"),

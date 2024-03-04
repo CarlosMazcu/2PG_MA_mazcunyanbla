@@ -13,3 +13,4 @@
 	}else{
            fragColor = u_color * texture(u_albedo_1, uv);
 	}
+        }
