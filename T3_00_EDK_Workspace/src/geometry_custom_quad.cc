@@ -44,13 +44,13 @@ void QuadCustom::init(const float quad_size) {
          ------------
     That's the order of its face.
    */
-
+    float size = quad_size * 0.5f;
   //****** Positions:
   //TODO
-    ESAT::Vec3 pos[] = { {-0.5, 0.5, 0.0},
-                         {0.5, 0.5, 0.0},
-                         {-0.5, -0.5, 0.0},
-                          {0.5, 0.5, 0.0} };
+    ESAT::Vec3 pos[] = { {-size, size, 0.0},
+                         {size, size, 0.0},
+                         {-size, -size, 0.0},
+                          {size, size, 0.0} };
 
 
   //****** Normals:
@@ -110,15 +110,15 @@ bool QuadCustom::bindAttribute(const Attribute a,
     {
     case Attribute::A_POSITION:
         EDK3::dev::GPUManager::Instance()->enableVertexAttribute(
-                elements_buffer.get(), 0, EDK3::T_FLOAT_3, false, 0, sizeof(float) * 8);
+                elements_buffer.get(), where_to_bind_attribute, EDK3::T_FLOAT_3, false, 0, sizeof(float) * 8);
         break;
     case Attribute::A_NORMAL:
         EDK3::dev::GPUManager::Instance()->enableVertexAttribute(
-            elements_buffer.get(), 1, EDK3::T_FLOAT_3, false, sizeof(float) * 3, sizeof(float) * 8);
+            elements_buffer.get(), where_to_bind_attribute, EDK3::T_FLOAT_3, false, sizeof(float) * 3, sizeof(float) * 8);
         break;
     case Attribute::A_UV:
         EDK3::dev::GPUManager::Instance()->enableVertexAttribute(
-            elements_buffer.get(), 2, EDK3::T_FLOAT_2, false, sizeof(float) * 6, sizeof(float) * 8);
+            elements_buffer.get(), where_to_bind_attribute, EDK3::T_FLOAT_2, false, sizeof(float) * 6, sizeof(float) * 8);
         break;
     default:
         return false;

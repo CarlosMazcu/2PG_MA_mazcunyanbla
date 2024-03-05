@@ -89,13 +89,15 @@ void InitScene() {
 
 void UpdateFn() {
   GameState.camera->set_clear_color(0.94f, 1.0f, 0.94f, 1.0f);
-  GameState.root->set_rotation_y(5 * ESAT::Time() / 100.0);
+  //GameState.root->set_rotation_y(5 * ESAT::Time() / 100.0);
 
 }
 
 void RenderFn() {
   //For every frame... determine what's visible:
   GameState.camera->doCull(GameState.root.get());
+
+ 
 
   //Rendering the scene:
   EDK3::dev::GPUManager::CheckGLError("begin Render-->");
