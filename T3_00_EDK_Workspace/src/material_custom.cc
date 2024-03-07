@@ -69,8 +69,40 @@ namespace EDK3 {
         GPU.newShader(&ShaderF);
         GPU.newProgram(&program_);
 
-        EDK3::Material::loadVertexShaderFile(&ShaderV, vertex_shader_path);
-        EDK3::Material::loadFragmentShaderFile(&ShaderF, fragment_shader_path);
+        FILE* vs_file = fopen(vertex_shader_path, "r");
+        int vs_size = 0;
+        if (vs_file) {
+            fseek(vs_file, 0, SEEK_END);
+            vs_size = ftell(vs_file) + 1;
+            EDK3::scoped_array<char> vs_text;
+            vs_text.alloc(vs_size);
+            vs_text[0] = '\0';
+            printf("%s\n", vs_text.get());
+
+            fseek(vs_file, 0, SEEK_SET);
+            fread(vs_text.get(), sizeof(char), vs_size, vs_file);
+            ShaderV->loadSource(EDK3::dev::Shader::Type::kType_Vertex, vs_text.get(), vs_size);
+            printf("%s\n", vs_text.get());
+            fclose(vs_file);
+        }
+        
+        FILE* fg_file = fopen(fragment_shader_path, "r");
+        int fg_size = 0;
+        if (fg_file) {
+            fseek(fg_file, 0, SEEK_END);
+            fg_size = ftell(fg_file) + 1;
+            EDK3::scoped_array<char> fg_text;
+            fg_text.alloc(fg_size);
+            fg_text[0] = '\0';
+            fseek(fg_file, 0, SEEK_SET);
+            fread(fg_text.get(), sizeof(char), fg_size, fg_file);
+            ShaderF->loadSource(EDK3::dev::Shader::Type::kType_Fragment, fg_text.get(), fg_size);
+            printf("%s\n", fg_text.get());
+            fclose(fg_file);
+        }
+       
+       // EDK3::Material::loadVertexShaderFile(&ShaderV, vertex_shader_path);
+       // EDK3::Material::loadFragmentShaderFile(&ShaderF, fragment_shader_path);
         if (!ShaderV) {
             printf("Can't load vertex\n");
             exit(-3);

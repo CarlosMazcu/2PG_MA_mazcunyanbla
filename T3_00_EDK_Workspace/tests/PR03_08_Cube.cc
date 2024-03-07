@@ -21,7 +21,7 @@
 
 #include "ESAT_extra/imgui.h"
 #include "EDK3/dev/opengl.h"
-#include "geometry_custom_quad.h"
+#include "geometry_custom_cube.h"
 
 
 //Unnamed struct and it's unique instance:
@@ -43,10 +43,10 @@ void InitScene() {
   EDK3::dev::GPUManager::CheckGLError("Initializing the scene...");
   
   //Creating a cube:
-  EDK3::ref_ptr<EDK3::QuadCustom> quad_geo;
+  EDK3::ref_ptr<EDK3::CubeCustom> quad_geo;
   quad_geo.alloc();
   //EDK3::CreateCube(&quad_geo, 1.0f, true, true);
-  quad_geo->init(3.0f);
+  quad_geo->init8v(3.0f);
 
 
   if (!quad_geo) {
@@ -56,7 +56,7 @@ void InitScene() {
   }
   //Loading texture:
   EDK3::ref_ptr<EDK3::Texture> texture;
-  EDK3::Texture::Load("C:/Users/mazcunyanbla/Documents/GitHub/2PG_MA_mazcunyanbla/T3_00_EDK_Workspace/bin/debug/x32/test/T_Chopper.jpg", &texture);
+  EDK3::Texture::Load("./test/mitext.jpg", &texture);
   if (!texture) {
     printf("Can't load texture.png\n");
     exit(-2);
@@ -97,7 +97,7 @@ void InitScene() {
 
 void UpdateFn() {
   GameState.camera->set_clear_color(0.94f, 1.0f, 0.94f, 1.0f);
-  //GameState.root->set_rotation_y(5 * ESAT::Time() / 100.0);
+  GameState.root->set_rotation_y(5 * ESAT::Time() / 100.0);
 
 }
 

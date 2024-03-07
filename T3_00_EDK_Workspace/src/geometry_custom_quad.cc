@@ -13,7 +13,7 @@
 
 namespace EDK3 {
 
-    QuadCustom::QuadCustom() {}
+    QuadCustom::QuadCustom() { is_initialized_ = false; }
     QuadCustom::~QuadCustom() {}
     QuadCustom& QuadCustom::operator=(const QuadCustom& other)
     {
@@ -24,6 +24,9 @@ namespace EDK3 {
 //IMPORTANT!!!
 //TODO constructors, destructor and =operator here!!!
     void QuadCustom::init(const float quad_size) {
+        if (is_initialized_) {
+            return;
+        }
         EDK3::dev::GPUManager::Instance()->newBuffer(&elements_buffer);
         EDK3::dev::GPUManager::Instance()->newBuffer(&order_buffer);
 
@@ -101,7 +104,7 @@ namespace EDK3 {
         order_buffer->init(sizeof(order));
         order_buffer->uploadData(order, sizeof(order), 0);
         is_initialized_ = true;
-
+        
     }
 
 

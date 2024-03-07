@@ -56,7 +56,7 @@ void InitScene() {
   }
   //Loading texture:
   EDK3::ref_ptr<EDK3::Texture> texture;
-  EDK3::Texture::Load("C:/Users/mazcunyanbla/Documents/GitHub/2PG_MA_mazcunyanbla/T3_00_EDK_Workspace/bin/debug/x32/test/T_Chopper.jpg", &texture);
+  EDK3::Texture::Load("./test/mitext.jpg", &texture);
   if (!texture) {
     printf("Can't load texture.png\n");
     exit(-2);
