@@ -12,5 +12,6 @@ xcopy /s /d /Y .\..\assets .\..\build\PR03_03_SolarSystem\vs2019
 xcopy /s /d /Y .\..\assets .\..\build\PR03_05_BasicMaterial\vs2019
 xcopy /s /d /Y .\..\assets .\..\build\PR03_06_CustomMaterial\vs2019
 xcopy /s /d /Y .\..\assets .\..\build\PR03_07_Quad\vs2019
+xcopy /s /d /Y .\..\assets .\..\build\PR03_08_Cube\vs2019
 
 pause
