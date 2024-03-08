@@ -70,20 +70,41 @@ namespace EDK3 {
         GPU.newProgram(&program_);
 
         FILE* vs_file = fopen(vertex_shader_path, "r");
+        if (vs_file == NULL)
+        {
+            printf("Error al cargar fichero Vertex Shader");
+            return;
+        }
         int vs_size = 0;
         if (vs_file) {
-            fseek(vs_file, 0, SEEK_END);
+            if (fseek(vs_file, 0, SEEK_END) != 0)
+            {
+                printf("Error al mover el puntero al final del fichero");
+                fclose(vs_file);
+                return;
+            }
             vs_size = ftell(vs_file) + 1;
-            EDK3::scoped_array<char> vs_text;
-            vs_text.alloc(vs_size);
-            vs_text[0] = '\0';
-            printf("%s\n", vs_text.get());
+            if (vs_size < 0)
+            {
+                printf("Error al obtener el tamaño del fichero");
+                fclose(vs_file);
+                return;
+            }
+           // EDK3::scoped_array<char> vs_text;
+           // vs_text.alloc(vs_size);
+           // vs_text[0] = '\0';
+            char *vs_text = (char*)malloc(vs_size * sizeof(char));
 
-            fseek(vs_file, 0, SEEK_SET);
-            fread(vs_text.get(), sizeof(char), vs_size, vs_file);
-            ShaderV->loadSource(EDK3::dev::Shader::Type::kType_Vertex, vs_text.get(), vs_size);
-            printf("%s\n", vs_text.get());
+            //printf("%s\n", vs_text.get());
+
+            //fseek(vs_file, 0, SEEK_SET);
+            rewind(vs_file);
+            fread(vs_text/*.get()*/, sizeof(char), vs_size, vs_file);
+            vs_text[vs_size] = '\0';
+            printf("%s\n", vs_text/*.get()*/);
+            ShaderV->loadSource(EDK3::dev::Shader::Type::kType_Vertex, vs_text/*.get()*/, vs_size);
             fclose(vs_file);
+            free(vs_text);
         }
         
         FILE* fg_file = fopen(fragment_shader_path, "r");
