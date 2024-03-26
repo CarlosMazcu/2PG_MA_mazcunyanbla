@@ -22,7 +22,8 @@ layout (location = 1) in vec3 a_normal;
 out vec3 normal;
 out vec3 pos;
 
-void main() {
+void main() 
+{
   pos = (u_m_matrix * vec4(a_position, 1.0)).xyz;
   gl_Position = u_vp_matrix * u_m_matrix * vec4(a_position, 1.0);
   normal = (u_m_matrix * vec4(a_normal, 0.0)).xyz;
