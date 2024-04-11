@@ -21,10 +21,10 @@ project_names = {
   "PR03_07_Quad",
   --"PR03_04_DotProduct",
   "PR03_08_Cube",
-  --"PR03_09_Sphere",
-  --"PR03_10_Surface",
+  "PR03_09_Sphere",
+  "PR03_10_Surface",
   --"PR03_11_Camera",
-  --"PR03_12_Terrain",
+  "PR03_12_Terrain",
   --"PR03_13_Transparencies",
   --"PR03_14_DemoRenderTarget",
   --"PR03_15_BasicPostprocess",
@@ -162,31 +162,31 @@ project "PR03_01_Demo"
   files {
     path.join(PROJ_DIR, "./tests/PR03_08_Cube.cc"),
   }
+  project "PR03_09_Sphere"
+    files {
+      path.join(PROJ_DIR, "./tests/PR03_09_Sphere.cc"),
+    }
+    project "PR03_12_Terrain"
+      files {
+        path.join(PROJ_DIR, "./tests/PR03_12_Terrain.cc"),
+      }
+      project "PR03_10_Surface"
+        files {
+          path.join(PROJ_DIR, "./tests/PR03_10_Surface.cc"),
+        }
   --[[
   project "PR03_04_DotProduct"
   files {
     path.join(PROJ_DIR, "./tests/PR03_04_DotProduct.cc"),
   }  
 
-project "PR03_09_Sphere"
-	files {
-	  path.join(PROJ_DIR, "./tests/PR03_09_Sphere.cc"),
-  }
 
-project "PR03_10_Surface"
-  files {
-    path.join(PROJ_DIR, "./tests/PR03_10_Surface.cc"),
-  }
 
 project "PR03_11_Camera"
 	files {
 	  path.join(PROJ_DIR, "./tests/PR03_11_Camera.cc"),
   }
 
-project "PR03_12_Terrain"
-	files {
-	  path.join(PROJ_DIR, "./tests/PR03_12_Terrain.cc"),
-  }
 
 project "PR03_13_Transparencies"
 	files {
