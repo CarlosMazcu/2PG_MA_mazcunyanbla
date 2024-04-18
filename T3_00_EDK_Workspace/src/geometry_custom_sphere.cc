@@ -29,11 +29,11 @@ namespace EDK3 {
 
             for (int j = 0; j <= num_revs; j++)
             {
-                float alpha = (float)i * 3.14 / num_heights;
+                float alpha = (float)i * 3.14f / num_heights;
                 float sin_alpha = sin(alpha);
                 float cos_alpha = cos(alpha);
 
-                float beta = (float)j * 6.28 / num_revs;
+                float beta = (float)j * 6.28f / num_revs;
                 float sin_beta = sin(beta);
                 float cos_beta = cos(beta);
 
@@ -69,7 +69,7 @@ namespace EDK3 {
         {
             for (int j = 0; j < num_revs; j++)
             {
-                int index = (i * num_revs + j) * 6;
+                index = (i * num_revs + j) * 6;
                 int first = i * (num_revs + 1) + j;
                 int second = first + num_revs + 1;
 

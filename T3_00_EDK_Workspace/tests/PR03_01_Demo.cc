@@ -16,6 +16,7 @@
 #include "EDK3/camera.h"
 #include "EDK3/drawable.h"
 #include "EDK3/matdiffusetexture.h"
+#include "EDK3/matdiffuse.h"
 #include "EDK3/texture.h"
 #include "EDK3/dev/gpumanager.h"
 
@@ -78,6 +79,37 @@ void InitScene() {
       root->addChild(drawable.get());
     }
   }
+  /////////GREYMON//////////
+  EDK3::scoped_array < EDK3::ref_ptr<EDK3::Geometry>> geos;
+  EDK3::LoadObj("./test/SM_Greymon.obj", &geos, nullptr);
+  EDK3::scoped_array<EDK3::ref_ptr<EDK3::Texture>> textures;
+  textures.alloc(geos.size());
+  for (unsigned int i = 0; i < geos.size(); ++i)
+  {
+      char path[60] = { '\0' };
+      sprintf(path, "./test/T_Greymon_01 (%d).jpg\0", i + 1);
+      EDK3::Texture::Load(path, &textures[i]);
+  }
+  EDK3::ref_ptr<EDK3::MatDiffuseTexture> mat_diff_t;
+  mat_diff_t.alloc();
+  float white[] = { 1.0f, 1.0f, 1.0f };
+  for (unsigned int i = 0; i < geos.size(); i++) {
+      EDK3::ref_ptr<EDK3::Drawable> obj_dr;
+      obj_dr.alloc();
+      obj_dr->set_geometry(geos[i].get());
+      /***********************************/
+      EDK3::ref_ptr<EDK3::MatDiffuseTexture::Settings> mat_diff_set;
+      mat_diff_set.alloc();
+      mat_diff_set->set_color(white);
+      mat_diff_set->set_texture(textures[i].get());
+      /***********************************/
+      obj_dr->set_material(mat_diff_t.get());
+      obj_dr->set_material_settings(mat_diff_set.get());
+      obj_dr->set_scale(30.0f, 30.0f, 30.0f);
+      obj_dr->set_position(0.0, 0.0, 0.0);
+      root->addChild(obj_dr.get());
+  }
+  ///////////////////////////
 
   //Allocating and initializing the camera:
   GameState.camera.alloc();

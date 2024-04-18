@@ -22,7 +22,7 @@ project_names = {
   --"PR03_04_DotProduct",
   "PR03_08_Cube",
   "PR03_09_Sphere",
-  "PR03_10_Surface",
+  --"PR03_10_Surface",
   --"PR03_11_Camera",
   "PR03_12_Terrain",
   --"PR03_13_Transparencies",
@@ -170,11 +170,11 @@ project "PR03_01_Demo"
       files {
         path.join(PROJ_DIR, "./tests/PR03_12_Terrain.cc"),
       }
+      --[[
       project "PR03_10_Surface"
         files {
           path.join(PROJ_DIR, "./tests/PR03_10_Surface.cc"),
         }
-  --[[
   project "PR03_04_DotProduct"
   files {
     path.join(PROJ_DIR, "./tests/PR03_04_DotProduct.cc"),

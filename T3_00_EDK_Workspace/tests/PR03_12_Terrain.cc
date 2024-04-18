@@ -37,14 +37,14 @@ const int kWindowHeight = 768;
 
 
 void InitScene() {
-    EDK3::ref_ptr<EDK3::TerrainCustom> terrain_geo;
-    //EDK3::CreateCube(&terrain_geo, 1.0f, true, true);
-    terrain_geo.alloc();
-    //terrain_geo->init8v(5.0f);
-    terrain_geo->init(5,5,4.0f, 4.0f, true);
+    EDK3::ref_ptr<EDK3::TerrainCustom> cube_geo;
+    //EDK3::CreateCube(&cube_geo, 1.0f, true, true);
+    cube_geo.alloc();
+    //cube_geo->init8v(5.0f);
+    cube_geo->init(20,20);
 
     EDK3::ref_ptr<EDK3::Texture> texture;
-    EDK3::Texture::Load("./test/mitext.jpg", &texture);
+    EDK3::Texture::Load("./test/T_Chopper.jpg", &texture);
     if (!texture) {
         printf("Error");
         exit(-2);
@@ -56,7 +56,7 @@ void InitScene() {
 
     EDK3::ref_ptr<EDK3::MaterialCustom::MaterialCustomTexturedSettings> material_settings;
     material_settings.alloc();
-    float color[] = { 1.0f, 1.0f, 1.0f, 0.0f };
+    float color[] = { 1.0f, 0.0f, 0.0f, 1.0f };
     material_settings->set_color(color);
     material_settings->set_texture(texture.get(), 0);
 
@@ -65,7 +65,7 @@ void InitScene() {
 
     EDK3::ref_ptr<EDK3::Drawable> drawable;
     drawable.alloc();
-    drawable->set_geometry(terrain_geo.get());
+    drawable->set_geometry(cube_geo.get());
     drawable->set_material(material.get());
     drawable->set_material_settings(material_settings.get());
     drawable->set_position(0.0f, 0.0f, 0.0f);
