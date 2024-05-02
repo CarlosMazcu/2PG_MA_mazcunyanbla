@@ -5,12 +5,12 @@
  * @subject Graphic Programming
  *
  * Check the following OpenGL functions:
- *   glAttachShader
- *   glDeleteProgram
- *   glLinkProgram
- *   glUseProgram
- *   glGetUniformLocation
- *   glCreateProgram  
+ *   glAttachShader//
+ *   glDeleteProgram//
+ *   glLinkProgram//
+ *   glUseProgram//
+ *   glGetUniformLocation//
+ *   glCreateProgram  //
  *   glGetProgramiv
  *   glGetProgramInfoLog
  *   glGetAttribLocation
@@ -49,13 +49,15 @@ class CustomGPUProgram : public EDK3::dev::Program {
   virtual void set_uniform_value(const int uniform_pos,
                                  const EDK3::Type uniform_type,
                                  const unsigned int* number) const;
-  virtual unsigned int internal_id() const override;
+  virtual GLuint internal_id() const override;
 
 
  protected:
   virtual ~CustomGPUProgram();
 
   //TODO any data here?
+  GLuint internal_id_;
+  
 
  private:
   CustomGPUProgram(const CustomGPUProgram&);

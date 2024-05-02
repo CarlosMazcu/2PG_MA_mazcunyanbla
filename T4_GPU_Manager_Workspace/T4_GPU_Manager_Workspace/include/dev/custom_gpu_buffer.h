@@ -29,7 +29,7 @@ class CustomGPUBuffer : public EDK3::dev::Buffer {
   CustomGPUBuffer();
   virtual void init(unsigned int size) override;
   virtual void bind(const Target t) const override;
-  virtual unsigned int size() const override;
+  virtual GLuint size() const override;
   virtual void uploadData(const void *data, unsigned int size,
                           unsigned int offset = 0) override;
   virtual void release() override;
@@ -37,8 +37,9 @@ class CustomGPUBuffer : public EDK3::dev::Buffer {
 
  protected:
   virtual ~CustomGPUBuffer();
-
-  //TODO any data here?
+  unsigned int size_;
+  GLuint internal_id_;
+  EDK3::dev::Buffer::Target target_;
 
  private:
   CustomGPUBuffer(const CustomGPUBuffer&);

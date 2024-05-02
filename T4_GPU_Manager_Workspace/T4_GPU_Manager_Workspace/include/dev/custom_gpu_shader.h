@@ -36,15 +36,16 @@ class CustomGPUShader : public EDK3::dev::Shader {
   virtual bool compile(EDK3::scoped_array<char> *output_log = NULL) override;
   virtual bool is_compiled() const override;
   virtual const EDK3::dev::Shader::Type type() const override;
-  virtual unsigned int internal_id() const override;
+  virtual GLuint internal_id() const override;
 
  protected:
   virtual ~CustomGPUShader();
 
   //TODO any data here?
+  
   bool is_compiled_;
   EDK3::dev::Shader::Type type_;
-  unsigned int internal_id_;
+  GLuint internal_id_;
 
  private:
   CustomGPUShader(const CustomGPUShader&);

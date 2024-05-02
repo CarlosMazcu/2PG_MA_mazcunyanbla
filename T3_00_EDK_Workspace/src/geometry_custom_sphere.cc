@@ -12,8 +12,6 @@ namespace EDK3 {
     void SphereCustom::init(const float sphere_size, const int num_heights, const int num_revs)
     {
         is_initialized_ = true;
-        num_heights_ = num_heights;
-        num_revs_ = num_revs;
 
         EDK3::dev::GPUManager::Instance()->newBuffer(&elements_buffer);
         EDK3::dev::GPUManager::Instance()->newBuffer(&order_buffer);

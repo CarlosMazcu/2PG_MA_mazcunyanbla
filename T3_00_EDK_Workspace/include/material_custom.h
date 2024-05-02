@@ -34,6 +34,29 @@ namespace EDK3 {
         virtual EDK3::Attribute attribute_at_index(const unsigned int attrib_idx) const;
         virtual EDK3::Type attribute_type_at_index(const unsigned int attrib_index) const;
 
+        struct LightInfo
+        {
+            int type_;
+            float pos_[3];
+            float dir_[3];
+            float diff_color_[3];
+            float spec_color_[3];
+            float linear_att_;
+            float quad_att_;
+            float constant_att_;
+            float shininess_;
+            float strenght_; // 1.0f
+            float camera_pos_[3];      
+            bool enabled_; // by default = false
+        };
+
+        class LightSettings : public EDK3::MaterialSettings {
+        public:
+            LightInfo lights_[8];
+            static float ambient_[3];
+            EDK3::ref_ptr<EDK3::Texture> texture_; //albedo
+            
+        };
 
         class MaterialCustomSettings : public EDK3::MaterialSettings {
         public:

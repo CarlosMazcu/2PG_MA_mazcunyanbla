@@ -161,7 +161,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_buffer.cc">
+      <Filter>src\dev</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_manager.cc">
+      <Filter>src\dev</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_program.cc">
+      <Filter>src\dev</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\dev\custom_gpu_shader.cc">
+      <Filter>src\dev</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_texture.cc">
       <Filter>src\dev</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\tests\PR04_00_GPUManager_Template.cc">

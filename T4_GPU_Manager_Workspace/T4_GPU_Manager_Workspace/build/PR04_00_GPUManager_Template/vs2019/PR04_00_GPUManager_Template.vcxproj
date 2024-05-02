@@ -210,7 +210,11 @@
     <ClInclude Include="..\..\..\include\dev\custom_gpu_texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_buffer.cc" />
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_manager.cc" />
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_program.cc" />
     <ClCompile Include="..\..\..\src\dev\custom_gpu_shader.cc" />
+    <ClCompile Include="..\..\..\src\dev\custom_gpu_texture.cc" />
     <ClCompile Include="..\..\..\tests\PR04_00_GPUManager_Template.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -66,11 +66,77 @@ void MaterialCustom::init(const char* vertex_shader_path, const char* fragment_s
 bool MaterialCustom::enable(const EDK3::MaterialSettings* mat) const {
   //Enable the material...
   //... and use the uniforms located in the material settings!
+   program_->use();
+   //const LightSettings* light_set = dynamic_cast<const LightSettings*>(mat);
+   // if (light_set) {
+   //     int counter = 0; 
+   //     for (int i = 0; i < 8; ++i) {
+   //         if (light_set->lights_[i].enabled_) {
+   //             char name[60] = '\0';
+   //             //.. Light type
+   //             sprintf(name, "u_light[%d].type", counter);
+   //             int loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_INT_1, light_set->lights_[i].type_);
+
+   //             //.. Light pos
+   //             sprintf(name, "u_light[%d].pos", counter);
+   //             loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_3, light_set->lights_[i].pos_);
+
+   //             //.. Light dir
+   //             sprintf(name, "u_light[%d].dir", counter);
+   //             loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_3, light_set->lights_[i].dir_);
+
+   //             //.. Diff Color
+   //             sprintf(name, "u_light[%d].diff_color", counter);
+   //             loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_3, light_set->lights_[i].diff_color_);
+
+   //             //.. Spec color
+   //             sprintf(name, "u_light[%d].spec_color", counter);
+   //             loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_FLOAT_3, light_set->lights_[i].spec_color_);
+
+   //             //.. linea att 
+   //             sprintf(name, "u_light[%d].linear_att", counter);
+   //             loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_FLOAT, light_set->lights_[i].linear_att_);
+
+   //             //.. quad att
+   //             sprintf(name, "u_light[%d].quad_att", counter);
+   //             loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_FLOAT, light_set->lights_[i].quad_att_);
+
+   //             //.. constant att
+   //             sprintf(name, "u_light[%d].constant_att", counter);
+   //             loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_FLOAT, light_set->lights_[i].constant_att_);
+
+   //             //.. shininess
+   //             sprintf(name, "u_light[%d].shininess", counter);
+   //             loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_FLOAT, light_set->lights_[i].shininess_);
+
+   //             //.. strength
+   //             sprintf(name, "u_light[%d].strength", counter);
+   //             loc = program_->get_uniform_position(name);
+   //             program_->set_uniform_value(loc, EDK3::Type::T_FLOAT, light_set->lights_[i].strength_);
+   //             counter++;
+   //         }
+   //     }
+
+   //     int location;
+   //     location = program_->get_uniform_position('u_number_lights');
+   //     program_->set_uniform_value(location, EDK3::Type::T_INT, counter);
+   //     
+   // 
+   // }
+
   const MaterialCustomSettings* ms = dynamic_cast<const MaterialCustomSettings*>(mat);
   int use_texture = 0;
   if (ms) {
       MaterialCustomSettings* non_const_ms = const_cast<MaterialCustomSettings*>(ms);
-    program_->use();
     unsigned int use_texture_loc = program_->get_uniform_position("u_use_texture");
     program_->set_uniform_value(use_texture_loc, Type::T_INT_1, &use_texture);
     float color[4] = { 1.0f, 1.0f, 0.0f, 1.0f };
@@ -83,7 +149,6 @@ bool MaterialCustom::enable(const EDK3::MaterialSettings* mat) const {
     const MaterialCustomTexturedSettings* ms2 = dynamic_cast<const MaterialCustomTexturedSettings*>(mat);
     if (ms2) {
       //Use material:
-      program_->use();
       //Color uniform:
       unsigned int color_loc = program_->get_uniform_position("u_color");
       program_->set_uniform_value(color_loc, Type::T_FLOAT_4, ms2->color());

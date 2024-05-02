@@ -147,6 +147,9 @@ void ImGuiFn(double dt) {
 int ESAT::main(int argc, char** argv) {
   //TODO programmer use your custom GPU Manager:
 
+  EDK3::dev::CustomGPUManager GPU;
+  EDK3::dev::GPUManager::ReplaceGPUManagerImplementation(&GPU);
+
   ESAT::WindowInit(kWindowWidth, kWindowHeight);
   InitScene();
   double dt = 0.0;

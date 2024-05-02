@@ -10,4 +10,5 @@ out vec2 uv;
 void main() {
     uv = a_uv;
     gl_Position = u_vp_matrix * u_m_matrix * vec4(a_position, 1.0);
+    //gl_Position = vec4(a_normal, 1.0);
 }

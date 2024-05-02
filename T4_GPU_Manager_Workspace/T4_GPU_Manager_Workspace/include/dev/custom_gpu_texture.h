@@ -53,7 +53,7 @@ class CustomGPUTexture : public EDK3::Texture {
 
  protected:
   virtual ~CustomGPUTexture();
-
+  GLuint id_;
   //TODO any data here?
 
  private:
